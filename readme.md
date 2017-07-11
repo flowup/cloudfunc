@@ -1,12 +1,21 @@
 # CloudFunc
 
-CloudFunc is a command line tool (cli) that deploys cloud functions with ease. It uses node.js shim to wrap the Go binary
-as the Cloud Functions only support Node at the moment.
+CloudFunc is a command line tool (cli) that deploys [Google Cloud Functions](https://cloud.google.com/functions/) with ease.
+It uses node.js shim to wrap the Go binary as the Cloud Functions only support Node at the moment.
 
 > Only us-central region is supported while Google Cloud Functions are in Beta
 
 ## Installation
 
+Please follow [gcloud sdk](https://cloud.google.com/sdk/downloads) installation notes in case you don't have the `gcloud` command.
+
+You will also need to update and install beta features at the moment
+```
+gcloud components update &&
+gcloud components install beta
+```
+
+Finally download the `cloudfunc` with its SDK
 ```
 go get -u github.com/flowup/cloudfunc/...
 ```
