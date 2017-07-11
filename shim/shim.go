@@ -84,7 +84,7 @@ func shimIndexJs() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "shim/index.js", size: 557, mode: os.FileMode(420), modTime: time.Unix(1499771686, 0)}
+	info := bindataFileInfo{name: "shim/index.js", size: 557, mode: os.FileMode(420), modTime: time.Unix(1499790474, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -104,7 +104,7 @@ func shimShimGo() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "shim/shim.go", size: 0, mode: os.FileMode(420), modTime: time.Unix(1499771693, 0)}
+	info := bindataFileInfo{name: "shim/shim.go", size: 0, mode: os.FileMode(420), modTime: time.Unix(1499790500, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }

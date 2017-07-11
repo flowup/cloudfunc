@@ -1,6 +1,6 @@
 {
   "name": "someexample",
   "bucket": "gelidus",
-  "memory": 128,
+  "memory": 256,
   "timeout": 3
 }

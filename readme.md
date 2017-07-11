@@ -41,7 +41,7 @@ func main() {
 
 ## Usage
 
-Single `deploy` command is exposed by the `cloudfunc``. This allows to target a folder with `main` package that will be
+Single `deploy` command is exposed by the `cloudfunc`. This allows to target a folder with `main` package that will be
 deployed to cloud functions. Name of the function will be derived from the name of the folder.
 
 > You need to also target the storage bucket that will be used to store contents of your function
