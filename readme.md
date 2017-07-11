@@ -7,6 +7,8 @@ It uses node.js shim to wrap the Go binary as the Cloud Functions only support N
 
 ## Installation
 
+> Tested on Golang 1.8
+
 Please follow [gcloud sdk](https://cloud.google.com/sdk/downloads) installation notes in case you don't have the `gcloud` command.
 
 You will also need to update and install beta features at the moment
@@ -65,4 +67,10 @@ Additional configurations can be done using `function.json` file within your fun
   "memory": 128,
   "timeout": 3
 }
+```
+
+In case your bucket is specified within the `function.json` file, you can simply deploy with:
+
+```
+cloudfunc deploy example # where example is your function folder
 ```
