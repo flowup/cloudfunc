@@ -43,6 +43,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "cloudfunc"
 	app.Usage = "deploys cloud function to the google cloud platform"
+	app.Version = "1.0.0"
 
 	app.Commands = []cli.Command{
 		{
