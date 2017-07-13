@@ -1,0 +1,26 @@
+{
+  "files": [
+    "/tmp/repo/cloudfunc-master",
+    "/tmp/repo/cloudfunc-master/.gitignore",
+    "/tmp/repo/cloudfunc-master/LICENSE",
+    "/tmp/repo/cloudfunc-master/Makefile",
+    "/tmp/repo/cloudfunc-master/api",
+    "/tmp/repo/cloudfunc-master/api/cloudfunc.go",
+    "/tmp/repo/cloudfunc-master/example",
+    "/tmp/repo/cloudfunc-master/example/function.json",
+    "/tmp/repo/cloudfunc-master/example/main.go",
+    "/tmp/repo/cloudfunc-master/glide.lock",
+    "/tmp/repo/cloudfunc-master/glide.yaml",
+    "/tmp/repo/cloudfunc-master/main.go",
+    "/tmp/repo/cloudfunc-master/readme.md",
+    "/tmp/repo/cloudfunc-master/shim",
+    "/tmp/repo/cloudfunc-master/shim/index.js",
+    "/tmp/repo/cloudfunc-master/shim/shim.go"
+  ],
+  "log": [
+    "/tmp/repo/cloudfunc-master/main.go:15:6: exported type Function should have comment or be unexported",
+    "/tmp/repo/cloudfunc-master/main.go:22:1: exported method Function.ToArray should have comment or be unexported",
+    "/tmp/repo/cloudfunc-master/example/main.go:8:12: should omit type map[string]interface{} from declaration of var input; it will be inferred from the right-hand side",
+    ""
+  ]
+}

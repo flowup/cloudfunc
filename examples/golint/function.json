@@ -1,0 +1,6 @@
+{
+  "name": "lint",
+  "bucket": "gelidus",
+  "memory": 256,
+  "timeout": 10
+}

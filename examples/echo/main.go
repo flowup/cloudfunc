@@ -1,4 +1,4 @@
-package main
+package echo
 
 import (
 	"github.com/flowup/cloudfunc/api"

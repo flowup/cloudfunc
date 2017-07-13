@@ -58,7 +58,7 @@ Where:
 
 ## Configuration
 
-Additional configurations can be done using `function.json` file within your function `main` package (look at the `/example` folder).
+Additional configurations can be done using `function.json` file within your function `main` package (look at the `/examples` folder).
 
 ```
 {
