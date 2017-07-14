@@ -1,5 +1,8 @@
 # CloudFunc
 
+[![GoDoc](http://img.shields.io/badge/godoc-reference-5272B4.svg?style=flat-square)](https://godoc.org/github.com/flowup/cloudfunc/api)
+![](https://img.shields.io/badge/license-MIT-blue.svg)
+
 CloudFunc is a command line tool (cli) that deploys [Google Cloud Functions](https://cloud.google.com/functions/) with ease.
 It uses node.js shim to wrap the Go binary as the Cloud Functions only support Node at the moment.
 
@@ -73,4 +76,20 @@ In case your bucket is specified within the `function.json` file, you can simply
 
 ```
 cloudfunc deploy example # where example is your function folder
+```
+
+## SDK
+
+There are two IO functions provided by `github.com/flowup/cloudfunc/api`:
+
+```go
+// GetInput accepts an interface and unmarshalls the function input using json.Unmarshal
+func GetInput(i interface{}) error {}
+```
+
+
+```go
+// Send marshalls given interface using json.Marshal and sends it back as a function output
+// If the interface can't be serialized, it will be returned as a pure string
+func Send(i interface{}) error
 ```
