@@ -1,0 +1,6 @@
+{
+  "name": "mortgage_amortization",
+  "bucket": "gelidus",
+  "memory": 256,
+  "timeout": 3
+}
