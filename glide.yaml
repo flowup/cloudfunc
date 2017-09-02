@@ -1,9 +1,0 @@
-package: github.com/flowup/api
-import:
-- package: github.com/spf13/viper
-  subpackages:
-  - '...'
-- package: github.com/urfave/cli
-  version: ^1.19.1
-- package: github.com/fatih/structs
-  version: ^1.0.0
