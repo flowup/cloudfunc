@@ -1,0 +1,16 @@
+steps:
+- name: 'ubuntu'
+  entrypoint: 'mkdir'
+  args: ['-p', '/go/github.com/flowup/cloudfunc']
+- name: 'ubuntu'
+  entrypoint: 'mv'
+  args: ['/workspace/*', '/go/github.com/flowup/cloudfunc/']
+- name: 'golang:1.9'
+  entrypoint: 'go'
+  args: ['get', 'github.com/golang/dep/cmd/dep']
+- name: 'golang:1.9'
+  entrypoint: 'dep'
+  args: ['ensure']
+- name: 'golang:1.9'
+  entrypoint: 'go'
+  args: ['build', '-o', 'main', '.']
