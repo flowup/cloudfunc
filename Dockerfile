@@ -1,4 +1,4 @@
-FROM golang:alpine
+FROM scratch
 
 COPY gopath/bin/cloudfunc /cloudfunc
 
