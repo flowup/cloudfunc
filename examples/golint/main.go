@@ -33,15 +33,22 @@ var (
 
 func main() {
 	config := &RepoConfig{}
-	if err := api.GetInput(&config); err != nil {
-		api.Send("Err: " + err.Error())
+	cloudFunc := api.NewCloudFunc()
+	req, err := cloudFunc.GetRequest()
+	if err != nil {
+		cloudFunc.SendResponse("Err: " + err.Error())
+		return
+	}
+
+	if err := req.BindBody(&config); err != nil {
+		cloudFunc.SendResponse("Err: " + err.Error())
 		return
 	}
 
 	// create the zip file
 	zipFile, err := os.Create("/tmp/repo.zip")
 	if err != nil {
-		api.Send("Err: " + err.Error())
+		cloudFunc.SendResponse("Err: " + err.Error())
 		return
 	}
 	defer zipFile.Close()
@@ -49,7 +56,7 @@ func main() {
 	// download the repo
 	res, err := http.Get(fmt.Sprintf("https://github.com/%s/%s/archive/master.zip", config.Owner, config.Repo))
 	if err != nil {
-		api.Send("Err: " + err.Error())
+		cloudFunc.SendResponse("Err: " + err.Error())
 		return
 	}
 	defer res.Body.Close()
@@ -57,14 +64,14 @@ func main() {
 	// copy downloaded zip to the file
 	_, err = io.Copy(zipFile, res.Body)
 	if err != nil {
-		api.Send("Err: " + err.Error())
+		cloudFunc.SendResponse("Err: " + err.Error())
 		return
 	}
 
 	os.MkdirAll("/tmp/repo/", os.ModePerm)
 	files, err := Unzip("/tmp/repo.zip", "/tmp/repo")
 	if err != nil {
-		api.Send("Err: " + err.Error())
+		cloudFunc.SendResponse("Err: " + err.Error())
 		return
 	}
 
@@ -77,7 +84,7 @@ func main() {
 		lintDir(dir)
 	}
 
-	api.Send(&Result{
+	cloudFunc.SendResponse(&Result{
 		Files: files,
 		Log: strings.Split(globalLog, "\n"),
 	})
