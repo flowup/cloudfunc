@@ -3,7 +3,17 @@ const fs = require('fs');
 
 exports.{{.Name}} = function (req, res) {
     const main = spawn('./main');
-    main.stdin.write(JSON.stringify(req.body));
+
+    reqGo = {};
+    reqGo.baseUrl = req.baseUrl;
+    reqGo.body = req.body;
+    reqGo.hostname = req.hostname;
+    reqGo.ip = req.ip;
+    reqGo.method = req.method;
+    reqGo.originalUrl = req.originalUrl;
+    reqGo.query = req.query;
+
+    main.stdin.write(JSON.stringify(reqGo));
     main.stdin.end();
 
     let result = '';

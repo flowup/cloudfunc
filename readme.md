@@ -38,10 +38,21 @@ import (
 
 func main() {
 	var input map[string]interface{} = make(map[string]interface{})
-	api.GetInput(&input)
+	
+	cloudFunction := api.NewCloudFunc()
+	req, err := cloudFunction.GetRequest()
+	if err != nil {
+		panic(err)
+	}
+	
+	err = req.BindBody(&input)
+	if err != nil {
+		panic(err)
+	}
 
-	api.Send(&input)
+	cloudFunction.SendResponse(&input)
 }
+
 ```
 
 ## Usage

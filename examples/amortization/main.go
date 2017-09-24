@@ -68,9 +68,20 @@ func ConstructAmortizationTable(config *Config) *AmortizationTable {
 func main() {
 	// create configuration and get user input
 	config := &Config{}
-	api.GetInput(&config)
+
+	cloudFunction := api.NewCloudFunc()
+	req, err := cloudFunction.GetRequest()
+	if err != nil {
+		panic(err)
+	}
+
+	err = req.BindBody(config)
+	if err != nil {
+		panic(err)
+	}
+
 	config.Payment = CalculatePayment(config.Amount, config.Rate, config.TermMonths)
 
 	// send back the result
-	api.Send(ConstructAmortizationTable(config))
+	cloudFunction.SendResponse(ConstructAmortizationTable(config))
 }
