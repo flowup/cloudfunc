@@ -1,5 +1,4 @@
 const { spawn } = require('child_process');
-const fs = require('fs');
 
 exports.{{.Name}} = function (req, res) {
     const main = spawn('./main');
