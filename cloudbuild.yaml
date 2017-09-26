@@ -1,0 +1,13 @@
+steps:
+- name: 'gcr.io/cloud-builders/go'
+  args: ['get', './...']
+  env: ['PROJECT_ROOT=cloudfunc']
+- name: 'gcr.io/cloud-builders/go'
+  args: ['install', '.']
+  env: ['PROJECT_ROOT=cloudfunc']
+- name: 'gcr.io/cloud-builders/go'
+  args: ['test', 'cloudfunc']
+  env: ['PROJECT_ROOT=cloudfunc']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/cloudfunc', '.']
+images: ['gcr.io/$PROJECT_ID/cloudfunc']
