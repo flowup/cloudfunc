@@ -1,12 +1,14 @@
 package main
 
 import (
-	"os"
-	"os/exec"
-	"github.com/flowup/cloudfunc/shim"
 	"fmt"
 	"html/template"
+	"os"
+	"os/exec"
+	"path/filepath"
 	"strconv"
+
+	"github.com/flowup/cloudfunc/shim"
 )
 
 // Function represents a configuration of a single function
@@ -14,8 +16,8 @@ type Function struct {
 	Source      string `mapstructure:"source"`
 	Name        string `mapstructure:"name"`
 	StageBucket string `mapstructure:"bucket"`
-	Memory      int `mapstructure:"memory"`
-	Timeout     int `mapstructure:"timeout"`
+	Memory      int    `mapstructure:"memory"`
+	Timeout     int    `mapstructure:"timeout"`
 }
 
 // ToArray creates an array of function arguments that are passed into the
@@ -43,7 +45,7 @@ func (f *Function) ToArray() []string {
 // Deploy performs deployment of a given function configuration
 func Deploy(function *Function) error {
 	// set the folder name constant
-	folderName := "__deploy__" + function.Name
+	folderName := filepath.Join("__deploy__" + function.Name)
 
 	// create the deployment folder and defer it's removal
 	err := os.Mkdir(folderName, os.ModePerm)
@@ -71,7 +73,7 @@ func Deploy(function *Function) error {
 		return err
 	}
 
-	shimFile, err := os.Create(folderName + "/index.js")
+	shimFile, err := os.Create(filepath.Join(folderName + "index.js"))
 	if err != nil {
 		return err
 	}
@@ -81,7 +83,6 @@ func Deploy(function *Function) error {
 
 	// change dir to the deployment folder and back
 	os.Chdir(folderName)
-
 
 	fmt.Println("Deploying function", function.Name, "to bucket", function.StageBucket)
 	// deploy the function
